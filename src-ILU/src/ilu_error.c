@@ -21,7 +21,7 @@
 #include "ilu_error/ilu_err-french.h"
 
 
-ILconst_string *iluErrors;
+static ILconst_string *iluErrors;
 ILconst_string *iluLibErrors;
 ILconst_string *iluMiscErrors;
 #define ILU_NUM_LANGUAGES 7

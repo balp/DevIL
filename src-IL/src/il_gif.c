@@ -441,15 +441,15 @@ ILboolean SkipExtensions(GFXCONTROL *Gfx)
 
 #define MAX_CODES 4096
 
-ILint	curr_size, clear, ending, newcodes, top_slot, slot, navail_bytes = 0, nbits_left = 0;
-ILubyte	b1;
-ILubyte	byte_buff[257];
-ILubyte	*pbytes;
-ILubyte	*stack;
-ILubyte	*suffix;
-ILshort	*prefix;
+static ILint	curr_size, clear, ending, newcodes, top_slot, slot, navail_bytes = 0, nbits_left = 0;
+static ILubyte	b1;
+static ILubyte	byte_buff[257];
+static ILubyte	*pbytes;
+static ILubyte	*stack;
+static ILubyte	*suffix;
+static ILshort	*prefix;
 
-ILboolean success;
+static ILboolean success;
 
 ILuint code_mask[13] =
 {

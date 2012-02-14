@@ -1,0 +1,12 @@
+bin/*
+*.class
+*.obj
+*.exe
+*.dcb
+*.zip
+*~
+*.swp
+/build*/
+*.BASE
+*.REMOTE
+*.LOCAL

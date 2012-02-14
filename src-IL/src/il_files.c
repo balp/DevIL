@@ -131,6 +131,12 @@ void ILAPIENTRY iRestoreWriteFuncs()
 	return;
 }
 
+#ifndef _WIN32
+#ifdef UNICODE
+size_t wchar2utf8(const wchar_t *srcStr, size_t inputSize, char *dstStr, size_t destSize ); // in il_mecel_portability
+#endif // UNICODE
+#endif // _WIN32
+
 
 // Next 7 functions are the default read functions
 
@@ -144,7 +150,9 @@ ILHANDLE ILAPIENTRY iDefaultOpenR(ILconst_string FileName)
 	#ifdef _WIN32
 		return (ILHANDLE)_wfopen(FileName, L"rb");
 	#else
-		return (ILHANDLE)fopen((char*)FileName, "rb");
+        char namebuffer[PATH_MAX];
+        wchar2utf8(FileName, wcslen(FileName), namebuffer, sizeof(namebuffer));
+		return (ILHANDLE)fopen(namebuffer, "rb");
 	#endif
 #endif//UNICODE
 }
@@ -231,7 +239,9 @@ ILHANDLE ILAPIENTRY iDefaultOpenW(ILconst_string FileName)
 	#ifdef _WIN32
 		return (ILHANDLE)_wfopen(FileName, L"wb");
 	#else
-		return (ILHANDLE)fopen((char*)FileName, "wb");
+        char namebuffer[PATH_MAX];
+        wchar2utf8(FileName, wcslen(FileName), namebuffer, sizeof(namebuffer));
+		return (ILHANDLE)fopen(namebuffer, "wb");
 	#endif
 #endif//UNICODE
 }

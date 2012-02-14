@@ -96,10 +96,9 @@ extern "C" {
 
 #ifdef _UNICODE
 	#define IL_TEXT(s) L##s
-	#ifndef _WIN32  // At least in Linux, fopen works fine, and wcsicmp is not defined.
-		#define wcsicmp wcsncasecmp
-		#define _wcsicmp wcsncasecmp
-		#define _wfopen fopen
+	#ifndef _WIN32  // At least in Linux, and wcsicmp is not defined.
+		#define wcsicmp wcscasecmp
+		#define _wcsicmp wcscasecmp
 	#endif
 	#define iStrCpy wcscpy
 #else

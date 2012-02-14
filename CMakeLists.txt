@@ -221,7 +221,7 @@ set( libIL_la_SOURCES
 	include/IL/devil_internal_exports.h
 )
 
-add_library(IL
+add_library(IL SHARED
 	${libIL_la_SOURCES}
 	)
 
@@ -263,7 +263,7 @@ set(libILU_la_SOURCES
 	${ILU_INCLUDE}/ilu_error/ilu_err-spanish.h 
 )
 
-add_library(ILU
+add_library(ILU SHARED
 	${libILU_la_SOURCES}
 )
 
@@ -278,7 +278,7 @@ set(libILUT_la_SOURCES
 	include/IL/devil_internal_exports.h
 )
 
-add_library(ILUT
+add_library(ILUT SHARED
 	${libILUT_la_SOURCES}
 )
 

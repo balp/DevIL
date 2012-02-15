@@ -282,10 +282,19 @@ add_library(ILUT SHARED
 	${libILUT_la_SOURCES}
 )
 
+install(DIRECTORY include/IL
+        DESTINATION include
+	)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/IL/config.h
+	DESTINATION include/IL/
+)
+
 install(TARGETS IL ILU ILUT
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 )
-
+if(${ROOT_PROJECT_NAME} STREQUAL "DevIL")
+  include(CPack)
+endif()
 EXPORT_LIBRARY_DEPENDENCIES(CMakeDepends.txt)

@@ -347,3 +347,10 @@ if(${ROOT_PROJECT_NAME} STREQUAL "DevIL")
   include(CPack)
 endif()
 EXPORT_LIBRARY_DEPENDENCIES(CMakeDepends.txt)
+
+add_executable(simple
+    examples/simple_example/simple.c
+)
+target_link_libraries(simple
+    IL
+)

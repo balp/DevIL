@@ -63,12 +63,7 @@ ILboolean ilSaveCHeader(ILconst_string FileName, char *InternalName)
 #ifndef _UNICODE
 	HeadFile = fopen(FileName, "wb");
 #else
-	#ifdef _WIN32
-		HeadFile = _wfopen(FileName, L"rb");
-	#else
-		HeadFile = fopen((char*)FileName, "rb");
-	#endif
-
+    HeadFile = _wfopen(FileName, L"rb");
 #endif//_UNICODE
 
 	if (HeadFile == NULL) {

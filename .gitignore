@@ -1,0 +1,13 @@
+bin/*
+*.class
+*.obj
+*.exe
+*.dcb
+*.zip
+*.pyc
+*~
+*.swp
+/build*/
+*.BASE
+*.REMOTE
+*.LOCAL

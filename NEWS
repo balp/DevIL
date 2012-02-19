@@ -24,7 +24,6 @@ These are just highlights of what was changed during each release.  For a more i
 - Added IL_VTF_COMP define to control the output format of VTF files.
 - Added French translation of errors.
 - Updated libraries.txt with new external libraries.
-	
 
 1.7.7
 ---

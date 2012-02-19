@@ -4,6 +4,7 @@ bin/*
 *.exe
 *.dcb
 *.zip
+*.pyc
 *~
 *.swp
 /build*/

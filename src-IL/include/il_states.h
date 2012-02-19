@@ -76,6 +76,7 @@ typedef struct IL_STATES
 	ILboolean	ilJpgProgressive;
 	ILenum		ilDxtcFormat;
 	ILenum		ilPcdPicNum;
+	ILuint		ilPngCompression;
 
 	ILint		ilPngAlphaIndex;	// this index should be treated as an alpha key (most formats use this rather than having alpha in the palette), -1 for none
 									// currently only used when writing out .png files and should obviously be set to -1 most of the time

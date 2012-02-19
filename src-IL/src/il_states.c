@@ -70,6 +70,10 @@ void ilDefaultStates()
 	ilStates[ilCurrentPos].ilPngAlphaIndex = -1;
 	ilStates[ilCurrentPos].ilVtfCompression = IL_DXT_NO_COMP;
 
+	// Default PNG compression setting as defined in libpng manual:
+	//  http://www.libpng.org/pub/png/libpng-1.2.5-manual.html#section-5.8
+	ilStates[ilCurrentPos].ilPngCompression = 6;
+
 	ilStates[ilCurrentPos].ilTgaId = NULL;
 	ilStates[ilCurrentPos].ilTgaAuthName = NULL;
 	ilStates[ilCurrentPos].ilTgaAuthComment = NULL;
@@ -500,6 +504,9 @@ void ILAPIENTRY ilGetIntegerv(ILenum Mode, ILint *Param)
 		case IL_VTF_COMP:
 			*Param = ilStates[ilCurrentPos].ilVtfCompression;
 			break;
+		case IL_PNG_COMPRESSION:
+			*Param = ilStates[ilCurrentPos].ilPngCompression;
+			break;
 
 		// Boolean values
 		case IL_CONV_PAL:
@@ -815,6 +822,7 @@ void ILAPIENTRY ilPushAttrib(ILuint Bits)
 		ilStates[ilCurrentPos].ilPcdPicNum = ilStates[ilCurrentPos-1].ilPcdPicNum;
 
 		ilStates[ilCurrentPos].ilPngAlphaIndex = ilStates[ilCurrentPos-1].ilPngAlphaIndex;
+		ilStates[ilCurrentPos].ilPngCompression = ilStates[ilCurrentPos-1].ilPngCompression;
 
 		// Strings
 		if (ilStates[ilCurrentPos].ilTgaId)
@@ -1156,6 +1164,14 @@ void ILAPIENTRY ilSetInteger(ILenum Mode, ILint Param)
 		case IL_VTF_COMP:
 			if (Param == IL_DXT1 || Param == IL_DXT5 || Param == IL_DXT3 || Param == IL_DXT1A || Param == IL_DXT_NO_COMP) {
 				ilStates[ilCurrentPos].ilVtfCompression = Param;
+				return;
+			}
+			break;
+		case IL_PNG_COMPRESSION:
+			// Valid PNG compression settings as defined in libpng manual:
+			//  http://www.libpng.org/pub/png/libpng-1.2.5-manual.html#section-5.8
+			if (Param >= 0 && Param <= 9) {
+				ilStates[ilCurrentPos].ilPngCompression = Param;
 				return;
 			}
 			break;

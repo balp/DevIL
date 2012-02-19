@@ -377,6 +377,7 @@ typedef long long unsigned int ILuint64;
 #define IL_PNG_ALPHA_INDEX 0x0724 //XIX : ILint : the color in the palette at this index value (0-255) is considered transparent, -1 for no trasparent color
 #define IL_JPG_PROGRESSIVE         0x0725
 #define IL_VTF_COMP                0x0726
+#define IL_PNG_COMPRESSION         0x0727
 
 
 // DXTC definitions

@@ -542,6 +542,8 @@ ILboolean iSavePngInternal()
 //	png_init_io(png_ptr, PngFile);
 	png_set_write_fn(png_ptr, NULL, png_write, flush_data);
 
+	png_set_compression_level(png_ptr, iGetInt(IL_PNG_COMPRESSION));
+
 	switch (iCurImage->Type)
 	{
 		case IL_BYTE:

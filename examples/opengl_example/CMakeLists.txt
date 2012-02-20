@@ -1,6 +1,5 @@
 PROJECT(Example_GL)
 
-FILE(GLOB Example_GL_SRCS *.c *.cpp *.h )
 
 INCLUDE_DIRECTORIES(
 
@@ -29,9 +28,10 @@ IF(WIN32)
 	ENDIF(BUILD_SHARED_LIBS)
 ENDIF(WIN32)
 
+SET( Example_GL_SRCS gltest.h gltest.c )
 SOURCE_GROUP(code FILES ${Example_GL_SRCS} )
 
-ADD_EXECUTABLE(Example_GL Example_GL_SRCS)
+ADD_EXECUTABLE(Example_GL ${Example_GL_SRCS})
 
 ## add link sub library info
 

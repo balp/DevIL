@@ -1,0 +1,9 @@
+
+SET( Example_SDL_SRCS sdl_test.c )
+SOURCE_GROUP(code FILES ${Example_GL_SRCS} )
+ADD_EXECUTABLE(Example_SDL ${Example_SDL_SRCS})
+TARGET_LINK_LIBRARIES(Example_SDL
+	IL
+	ILU
+	ILUT
+)

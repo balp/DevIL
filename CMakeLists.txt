@@ -20,6 +20,7 @@ INCLUDE (CheckLibraryExists)
 INCLUDE (CheckPrototypeDefinition) 
 INCLUDE (CheckCCompilerFlag) 
 
+CHECK_INCLUDE_FILES("windows.h" HAVE_WINDOWS_H )
 CHECK_C_COMPILER_FLAG(maltivec HAVE_ALTIVEC_GCC)
 if(HAVE_ALTIVEC_GCC)
   SET(ALTIVEC_GCC True CACHE Bool "If to use Altivec instruction")
@@ -59,8 +60,10 @@ endif()
 
 CHECK_INCLUDE_FILES("GL/gl.h" HAVE_GL_GL_H )
 CHECK_INCLUDE_FILES("GL/glu.h" HAVE_GL_GLU_H )
+CHECK_INCLUDE_FILES("GL/glut.h" HAVE_GL_GLUT_H )
 CHECK_INCLUDE_FILES("OpenGL/gl.h" HAVE_OPENGL_GL_H )
 CHECK_INCLUDE_FILES("OpenGL/glu.h" HAVE_OPENGL_GLU_H )
+CHECK_INCLUDE_FILES("OpenGL/glut.h" HAVE_OPENGL_GLUT_H )
 if(HAVE_GL_GLU_H OR HAVE_OPENGL_GLU_H)
   SET(ILUT_USE_OPENGL True CACHE Bool "Define if system supports OpenGL API")
 else()
@@ -210,140 +213,140 @@ set(HAVE_LIBM True CACHE Bool "If have math lib.")
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/IL/config.h.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/include/IL/config.h)
 
 include_directories (
-	${CMAKE_CURRENT_BINARY_DIR}/include/
-	${CMAKE_CURRENT_SOURCE_DIR}/include/
-	${CMAKE_CURRENT_SOURCE_DIR}/src-IL/include/
-	${CMAKE_CURRENT_SOURCE_DIR}/src-ILU/include/
-	${CMAKE_CURRENT_SOURCE_DIR}/src-ILUT/include/
+    ${CMAKE_CURRENT_BINARY_DIR}/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src-IL/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src-ILU/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src-ILUT/include/
 )
 
 
 set(IL_SRC src-IL/src)
 set(IL_INCLUDE src-IL/include)
 set( libIL_la_SOURCES 
-       	${IL_SRC}/il_alloc.c
-	${IL_SRC}/il_doom.c
-	${IL_SRC}/il_stack.c
-	${IL_SRC}/il_pcx.c
-	${IL_SRC}/il_rle.c
-	${IL_SRC}/il_bits.c
-	${IL_SRC}/il_endian.c
-	${IL_SRC}/il_exr.cpp
-	${IL_SRC}/il_jpeg.c
-	${IL_SRC}/il_pic.c
-	${IL_SRC}/il_sgi.c
-	${IL_SRC}/il_bmp.c
-	${IL_SRC}/il_error.c
-	${IL_SRC}/il_lif.c
-	${IL_SRC}/il_png.c
-	${IL_SRC}/il_states.c
-	${IL_SRC}/il_convbuff.c
-	${IL_SRC}/il_files.c
-	${IL_SRC}/il_main.c
-	${IL_SRC}/il_pnm.c
-	${IL_SRC}/il_targa.c
-	${IL_SRC}/il_wdp.c
-	${IL_SRC}/il_convert.c
-	${IL_SRC}/il_gif.c
-	${IL_SRC}/il_manip.c
-	${IL_SRC}/il_profiles.c
-	${IL_SRC}/il_tiff.c
-	${IL_SRC}/il_cut.c
-	${IL_SRC}/il_header.c
-	${IL_SRC}/il_mdl.c
-	${IL_SRC}/il_quantizer.c
-	${IL_SRC}/il_utility.c
-	${IL_SRC}/il_dcx.c
-	${IL_SRC}/il_icon.c
-	${IL_SRC}/il_mng.c
-	${IL_SRC}/il_raw.c
-	${IL_SRC}/il_wal.c
-	${IL_SRC}/il_dds.c
-	${IL_SRC}/il_internal.c
-	${IL_SRC}/il_pal.c
-	${IL_SRC}/il_rawdata.c
-	${IL_SRC}/il_devil.c
-	${IL_SRC}/il_io.c
-	${IL_SRC}/il_pcd.c
-	${IL_SRC}/il_register.c
-	${IL_SRC}/il_psd.c
-	${IL_SRC}/il_fastconv.c
-	${IL_SRC}/il_neuquant.c
-	${IL_SRC}/il_dds-save.c
-	${IL_SRC}/il_psp.c
-	${IL_SRC}/il_pix.c
-	${IL_SRC}/il_pxr.c
-	${IL_SRC}/il_vtf.c
-	${IL_SRC}/il_xpm.c
-	${IL_SRC}/il_hdr.c
-	${IL_SRC}/il_icns.c
-	${IL_SRC}/il_jp2.c
-	${IL_SRC}/altivec_common.c
-	${IL_SRC}/altivec_typeconversion.c
-	${IL_SRC}/il_sun.c
-	${IL_SRC}/il_nvidia.cpp
-	${IL_SRC}/il_wbmp.c
-	${IL_SRC}/il_squish.cpp
-	${IL_SRC}/il_iff.c
-	${IL_SRC}/il_ilbm.c
-	${IL_SRC}/il_size.c
-	${IL_SRC}/il_tpl.c
-	${IL_SRC}/il_fits.c
-	${IL_SRC}/il_iwi.c
-	${IL_SRC}/il_blp.c
-	${IL_SRC}/il_ftx.c
-	${IL_SRC}/il_dicom.c
-	${IL_SRC}/il_rot.c
-	${IL_SRC}/il_texture.c
-	${IL_SRC}/il_dpx.c
-	${IL_SRC}/il_utx.cpp
-	${IL_SRC}/il_mp3.c
-	${IL_SRC}/il_mecel_portability.c
+        ${IL_SRC}/il_alloc.c
+    ${IL_SRC}/il_doom.c
+    ${IL_SRC}/il_stack.c
+    ${IL_SRC}/il_pcx.c
+    ${IL_SRC}/il_rle.c
+    ${IL_SRC}/il_bits.c
+    ${IL_SRC}/il_endian.c
+    ${IL_SRC}/il_exr.cpp
+    ${IL_SRC}/il_jpeg.c
+    ${IL_SRC}/il_pic.c
+    ${IL_SRC}/il_sgi.c
+    ${IL_SRC}/il_bmp.c
+    ${IL_SRC}/il_error.c
+    ${IL_SRC}/il_lif.c
+    ${IL_SRC}/il_png.c
+    ${IL_SRC}/il_states.c
+    ${IL_SRC}/il_convbuff.c
+    ${IL_SRC}/il_files.c
+    ${IL_SRC}/il_main.c
+    ${IL_SRC}/il_pnm.c
+    ${IL_SRC}/il_targa.c
+    ${IL_SRC}/il_wdp.c
+    ${IL_SRC}/il_convert.c
+    ${IL_SRC}/il_gif.c
+    ${IL_SRC}/il_manip.c
+    ${IL_SRC}/il_profiles.c
+    ${IL_SRC}/il_tiff.c
+    ${IL_SRC}/il_cut.c
+    ${IL_SRC}/il_header.c
+    ${IL_SRC}/il_mdl.c
+    ${IL_SRC}/il_quantizer.c
+    ${IL_SRC}/il_utility.c
+    ${IL_SRC}/il_dcx.c
+    ${IL_SRC}/il_icon.c
+    ${IL_SRC}/il_mng.c
+    ${IL_SRC}/il_raw.c
+    ${IL_SRC}/il_wal.c
+    ${IL_SRC}/il_dds.c
+    ${IL_SRC}/il_internal.c
+    ${IL_SRC}/il_pal.c
+    ${IL_SRC}/il_rawdata.c
+    ${IL_SRC}/il_devil.c
+    ${IL_SRC}/il_io.c
+    ${IL_SRC}/il_pcd.c
+    ${IL_SRC}/il_register.c
+    ${IL_SRC}/il_psd.c
+    ${IL_SRC}/il_fastconv.c
+    ${IL_SRC}/il_neuquant.c
+    ${IL_SRC}/il_dds-save.c
+    ${IL_SRC}/il_psp.c
+    ${IL_SRC}/il_pix.c
+    ${IL_SRC}/il_pxr.c
+    ${IL_SRC}/il_vtf.c
+    ${IL_SRC}/il_xpm.c
+    ${IL_SRC}/il_hdr.c
+    ${IL_SRC}/il_icns.c
+    ${IL_SRC}/il_jp2.c
+    ${IL_SRC}/altivec_common.c
+    ${IL_SRC}/altivec_typeconversion.c
+    ${IL_SRC}/il_sun.c
+    ${IL_SRC}/il_nvidia.cpp
+    ${IL_SRC}/il_wbmp.c
+    ${IL_SRC}/il_squish.cpp
+    ${IL_SRC}/il_iff.c
+    ${IL_SRC}/il_ilbm.c
+    ${IL_SRC}/il_size.c
+    ${IL_SRC}/il_tpl.c
+    ${IL_SRC}/il_fits.c
+    ${IL_SRC}/il_iwi.c
+    ${IL_SRC}/il_blp.c
+    ${IL_SRC}/il_ftx.c
+    ${IL_SRC}/il_dicom.c
+    ${IL_SRC}/il_rot.c
+    ${IL_SRC}/il_texture.c
+    ${IL_SRC}/il_dpx.c
+    ${IL_SRC}/il_utx.cpp
+    ${IL_SRC}/il_mp3.c
+    ${IL_SRC}/il_mecel_portability.c
 
-	${IL_INCLUDE}/altivec_common.h
-	${IL_INCLUDE}/altivec_typeconversion.h
-	${IL_INCLUDE}/il_alloc.h
-	${IL_INCLUDE}/il_bits.h
-	${IL_INCLUDE}/il_bmp.h
-	${IL_INCLUDE}/il_dcx.h
-	${IL_INCLUDE}/il_dds.h
-	${IL_INCLUDE}/il_doompal.h
-	${IL_INCLUDE}/il_dpx.h
-	${IL_INCLUDE}/il_endian.h
-	${IL_INCLUDE}/il_exr.h
-	${IL_INCLUDE}/il_files.h
-	${IL_INCLUDE}/il_gif.h
-	${IL_INCLUDE}/il_hdr.h
-	${IL_INCLUDE}/il_icns.h
-	${IL_INCLUDE}/il_icon.h
-	${IL_INCLUDE}/il_internal.h
-	${IL_INCLUDE}/il_jp2.h
-	${IL_INCLUDE}/il_jpeg.h
-	${IL_INCLUDE}/il_lif.h
-	${IL_INCLUDE}/il_manip.h
-	${IL_INCLUDE}/il_mdl.h
-	${IL_INCLUDE}/il_pal.h
-	${IL_INCLUDE}/il_pcx.h
-	${IL_INCLUDE}/il_pic.h
-	${IL_INCLUDE}/il_pnm.h
-	${IL_INCLUDE}/il_psd.h
-	${IL_INCLUDE}/il_psp.h
-	${IL_INCLUDE}/il_q2pal.h
-	${IL_INCLUDE}/il_register.h
-	${IL_INCLUDE}/il_rle.h
-	${IL_INCLUDE}/il_sgi.h
-	${IL_INCLUDE}/il_stack.h
-	${IL_INCLUDE}/il_states.h
-	${IL_INCLUDE}/il_targa.h
-	${IL_INCLUDE}/il_utx.h
-	${IL_INCLUDE}/il_vtf.h
-	${IL_INCLUDE}/il_wdp.h
-	include/IL/devil_internal_exports.h
+    ${IL_INCLUDE}/altivec_common.h
+    ${IL_INCLUDE}/altivec_typeconversion.h
+    ${IL_INCLUDE}/il_alloc.h
+    ${IL_INCLUDE}/il_bits.h
+    ${IL_INCLUDE}/il_bmp.h
+    ${IL_INCLUDE}/il_dcx.h
+    ${IL_INCLUDE}/il_dds.h
+    ${IL_INCLUDE}/il_doompal.h
+    ${IL_INCLUDE}/il_dpx.h
+    ${IL_INCLUDE}/il_endian.h
+    ${IL_INCLUDE}/il_exr.h
+    ${IL_INCLUDE}/il_files.h
+    ${IL_INCLUDE}/il_gif.h
+    ${IL_INCLUDE}/il_hdr.h
+    ${IL_INCLUDE}/il_icns.h
+    ${IL_INCLUDE}/il_icon.h
+    ${IL_INCLUDE}/il_internal.h
+    ${IL_INCLUDE}/il_jp2.h
+    ${IL_INCLUDE}/il_jpeg.h
+    ${IL_INCLUDE}/il_lif.h
+    ${IL_INCLUDE}/il_manip.h
+    ${IL_INCLUDE}/il_mdl.h
+    ${IL_INCLUDE}/il_pal.h
+    ${IL_INCLUDE}/il_pcx.h
+    ${IL_INCLUDE}/il_pic.h
+    ${IL_INCLUDE}/il_pnm.h
+    ${IL_INCLUDE}/il_psd.h
+    ${IL_INCLUDE}/il_psp.h
+    ${IL_INCLUDE}/il_q2pal.h
+    ${IL_INCLUDE}/il_register.h
+    ${IL_INCLUDE}/il_rle.h
+    ${IL_INCLUDE}/il_sgi.h
+    ${IL_INCLUDE}/il_stack.h
+    ${IL_INCLUDE}/il_states.h
+    ${IL_INCLUDE}/il_targa.h
+    ${IL_INCLUDE}/il_utx.h
+    ${IL_INCLUDE}/il_vtf.h
+    ${IL_INCLUDE}/il_wdp.h
+    include/IL/devil_internal_exports.h
 )
 
 add_library(IL SHARED
-	${libIL_la_SOURCES}
-	)
+    ${libIL_la_SOURCES}
+    )
 target_link_libraries(IL
     ${LINK_LIBRARIES}
 )
@@ -352,71 +355,71 @@ if(ILU_ENABLED)
     set(ILU_SRC src-ILU/src)
     set(ILU_INCLUDE src-ILU/include)
     set(libILU_la_SOURCES 
-	    ${ILU_SRC}/ilu_alloc.c
-	    ${ILU_SRC}/ilu_internal.c
-	    ${ILU_SRC}/ilu_noise.c
-	    ${ILU_SRC}/ilu_scale.c
-	    ${ILU_SRC}/ilu_error.c
-	    ${ILU_SRC}/ilu_main.c
-	    ${ILU_SRC}/ilu_rotate.c
-	    ${ILU_SRC}/ilu_scaling.c
-	    ${ILU_SRC}/ilu_filter.c
-	    ${ILU_SRC}/ilu_manip.c
-	    ${ILU_SRC}/ilu_scale2d.c
-	    ${ILU_SRC}/ilu_states.c
-	    ${ILU_SRC}/ilu_filter_rcg.c
-	    ${ILU_SRC}/ilu_mipmap.c
-	    ${ILU_SRC}/ilu_scale3d.c
-	    ${ILU_SRC}/ilu_utilities.c
-	    ${ILU_SRC}/ilu_region.c
+        ${ILU_SRC}/ilu_alloc.c
+        ${ILU_SRC}/ilu_internal.c
+        ${ILU_SRC}/ilu_noise.c
+        ${ILU_SRC}/ilu_scale.c
+        ${ILU_SRC}/ilu_error.c
+        ${ILU_SRC}/ilu_main.c
+        ${ILU_SRC}/ilu_rotate.c
+        ${ILU_SRC}/ilu_scaling.c
+        ${ILU_SRC}/ilu_filter.c
+        ${ILU_SRC}/ilu_manip.c
+        ${ILU_SRC}/ilu_scale2d.c
+        ${ILU_SRC}/ilu_states.c
+        ${ILU_SRC}/ilu_filter_rcg.c
+        ${ILU_SRC}/ilu_mipmap.c
+        ${ILU_SRC}/ilu_scale3d.c
+        ${ILU_SRC}/ilu_utilities.c
+        ${ILU_SRC}/ilu_region.c
 
-	    ${ILU_INCLUDE}/ilu_alloc.h
-	    ${ILU_INCLUDE}/ilu_filter.h
-	    ${ILU_INCLUDE}/ilu_internal.h
-	    ${ILU_INCLUDE}/ilu_region.h
-	    ${ILU_INCLUDE}/ilu_states.h
-	    include/IL/devil_internal_exports.h
-	    include/IL/ilu_region.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-arabic.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-dutch.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-english.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-french.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-german.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-japanese.h
-	    ${ILU_INCLUDE}/ilu_error/ilu_err-spanish.h 
+        ${ILU_INCLUDE}/ilu_alloc.h
+        ${ILU_INCLUDE}/ilu_filter.h
+        ${ILU_INCLUDE}/ilu_internal.h
+        ${ILU_INCLUDE}/ilu_region.h
+        ${ILU_INCLUDE}/ilu_states.h
+        include/IL/devil_internal_exports.h
+        include/IL/ilu_region.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-arabic.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-dutch.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-english.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-french.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-german.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-japanese.h
+        ${ILU_INCLUDE}/ilu_error/ilu_err-spanish.h 
     )
 
     add_library(ILU SHARED
-	    ${libILU_la_SOURCES}
+        ${libILU_la_SOURCES}
     )
 endif()
 
 set(ILUT_SRC src-ILUT/src)
 set(ILUT_INCLUDE src-ILUT/include)
 set(libILUT_la_SOURCES 
-	${ILUT_SRC}/ilut_main.c
-	${ILUT_SRC}/ilut_states.c
-	${ILUT_SRC}/ilut_internal.c  
-	${ILUT_INCLUDE}/ilut_internal.h
-	${ILUT_INCLUDE}/ilut_states.h
-	include/IL/devil_internal_exports.h
+    ${ILUT_SRC}/ilut_main.c
+    ${ILUT_SRC}/ilut_states.c
+    ${ILUT_SRC}/ilut_internal.c  
+    ${ILUT_INCLUDE}/ilut_internal.h
+    ${ILUT_INCLUDE}/ilut_states.h
+    include/IL/devil_internal_exports.h
 )
 
 add_library(ILUT SHARED
-	${libILUT_la_SOURCES}
+    ${libILUT_la_SOURCES}
 )
 
 install(DIRECTORY include/IL
         DESTINATION include
-	)
+    )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/IL/config.h
-	DESTINATION include/IL/
+    DESTINATION include/IL/
 )
 
 install(TARGETS IL ILU ILUT
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
 )
 if(${ROOT_PROJECT_NAME} STREQUAL "DevIL")
   include(CPack)
@@ -429,6 +432,26 @@ add_executable(simple
 target_link_libraries(simple
     IL
 )
+
+if(HAVE_WINDOWS_H)
+  add_subdirectory(examples/animation_example)
+endif()
+if(HAVE_SDL_H)
+  add_subdirectory(examples/sdl_example)
+endif()
+if(HAVE_GL_GLUT_H)
+  add_subdirectory(examples/opengl_example)
+endif()
+
+include(FindDoxygen)
+if(DOXYGEN_FOUND)
+    add_custom_target(doc
+        ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/docs/devil.doxyfile
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen" VERBATIM
+    )
+endif()
+
 
 find_program( PYBOT_BIN pybot
 )

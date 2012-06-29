@@ -266,6 +266,7 @@ set(libILU_la_SOURCES
 add_library(ILU SHARED
 	${libILU_la_SOURCES}
 )
+target_link_libraries( ILU IL )
 
 set(ILUT_SRC src-ILUT/src)
 set(ILUT_INCLUDE src-ILUT/include)
@@ -281,6 +282,7 @@ set(libILUT_la_SOURCES
 add_library(ILUT SHARED
 	${libILUT_la_SOURCES}
 )
+target_link_libraries( ILUT ILU IL )
 
 install(TARGETS IL ILU ILUT
 	RUNTIME DESTINATION bin

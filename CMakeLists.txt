@@ -224,7 +224,11 @@ set( libIL_la_SOURCES
 add_library(IL SHARED
 	${libIL_la_SOURCES}
 	)
+if(NOT DEFINED PNG_LIBS )
+    set(PNG_LIBS png14 )
+endif()
 
+target_link_libraries( IL ${PNG_LIBS} )
 
 set(ILU_SRC src-ILU/src)
 set(ILU_INCLUDE src-ILU/include)
@@ -274,6 +278,11 @@ set(libILUT_la_SOURCES
 	${ILUT_SRC}/ilut_main.c
 	${ILUT_SRC}/ilut_states.c
 	${ILUT_SRC}/ilut_internal.c  
+	${ILUT_SRC}/ilut_win32.c  
+	${ILUT_SRC}/ilut_opengl.c  
+	${ILUT_SRC}/ilut_directx.c  
+	${ILUT_SRC}/ilut_directx9.c  
+	${ILUT_SRC}/ilut_x11.c  
 	${ILUT_INCLUDE}/ilut_internal.h
 	${ILUT_INCLUDE}/ilut_states.h
 	include/IL/devil_internal_exports.h

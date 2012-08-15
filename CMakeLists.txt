@@ -52,8 +52,8 @@ SET(IL_NO_IFF False)
 SET(IL_NO_ILBM False)
 SET(IL_NO_IWI False)
 SET(IL_NO_JP2 True)
-SET(IL_NO_JPG True)
-MESSAGE(STATUS "JPEG: ${IL_NO_JPG}")
+SET(IL_NO_JPG False)
+MESSAGE(STATUS "IL_NO_JPG: ${IL_NO_JPG}")
 SET(IL_NO_LCMS True)
 SET(IL_NO_LIF True)
 SET(IL_NO_MDL True)
@@ -86,6 +86,8 @@ SET(IL_USE_DXTC_NVIDIA False)
 SET(IL_USE_DXTC_SQUISH False)
 SET(IL_USE_JPEGLIB_UNMODIFIED False)
 SET(LCMS_NODIRINCLUDE False)
+
+ADD_DEFINITIONS(-DNOINLINE)
 
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/IL/config.h.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/include/IL/config.h)
 
@@ -227,8 +229,11 @@ add_library(IL SHARED
 if(NOT DEFINED PNG_LIBS )
     set(PNG_LIBS png14 )
 endif()
+if(NOT DEFINED JPEG_LIBS )
+    set(JPEG_LIBS jpeg )
+endif()
 
-target_link_libraries( IL ${PNG_LIBS} )
+target_link_libraries( IL ${PNG_LIBS} ${JPEG_LIBS} )
 
 set(ILU_SRC src-ILU/src)
 set(ILU_INCLUDE src-ILU/include)

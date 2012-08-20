@@ -106,13 +106,13 @@ typedef long long unsigned int ILuint64;
 	//ILconst_string works as intended
 	#define ILchar wchar_t
 	#define ILstring wchar_t*
-	#define ILconst_string  wchar_t const *
+	#define ILconst_string  const wchar_t *
 #else
 	//if we use a define instead of a typedef,
 	//ILconst_string works as intended
 	#define ILchar char
 	#define ILstring char*
-	#define ILconst_string char const *
+	#define ILconst_string const char *
 #endif //_UNICODE
 
 #define IL_FALSE			0

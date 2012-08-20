@@ -53,7 +53,11 @@
 	#include <windows.h>
 	#define IL_TEXT(s) TEXT(s)
 #else
+    #ifdef _UNICODE
+	#define IL_TEXT(s) (L##s)
+    #else
 	#define IL_TEXT(s) s
+    #endif // _UNICODE
 	#define TEXT(s) s
 #endif
 

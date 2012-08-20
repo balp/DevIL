@@ -13,6 +13,7 @@
 
 #include "il_internal.h"
 #include "il_pal.h"
+#include "il_mecel_portability.h"
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>

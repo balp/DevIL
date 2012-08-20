@@ -13,6 +13,7 @@
 #ifndef IL_NO_CHEAD
 
 #include "il_internal.h"
+#include "il_mecel_portability.h"
 
 // Just a guess...let's see what's purty!
 #define MAX_LINE_WIDTH 14

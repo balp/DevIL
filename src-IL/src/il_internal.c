@@ -12,6 +12,7 @@
 
 
 #include "il_internal.h"
+#include "il_mecel_portability.h"
 #include <string.h>
 #include <stdlib.h>
 

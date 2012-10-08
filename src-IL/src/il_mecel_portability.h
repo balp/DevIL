@@ -1,7 +1,8 @@
 
-#ifdef QNX
+#if defined (QNX) || defined(__INTEGRITY)
 #include <wchar.h>
 int wcsncasecmp(const wchar_t *s1, const wchar_t *s2, size_t n) ;
+int wcscasecmp(const wchar_t *s1, const wchar_t *s2) ;
 #endif
 
 #ifndef _WIN32

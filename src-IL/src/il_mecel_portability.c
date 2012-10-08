@@ -54,7 +54,7 @@ int wcscasecmp(const wchar_t *s1, const wchar_t *s2)
         }
         ++s1;
         ++s2;
-    } while(true);
+    } while(1);
 }
 
 #endif

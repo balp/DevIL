@@ -257,7 +257,7 @@ ILenum ILAPIENTRY ilDetermineTypeF(ILHANDLE File)
 		return IL_MDL;
 	#endif
 
-	#ifndef IL_NO_MDL
+	#ifndef IL_NO_MP3
 	if (ilIsValidMp3F(File))
 		return IL_MP3;
 	#endif

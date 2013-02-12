@@ -232,9 +232,10 @@ set( libIL_la_SOURCES
     include/IL/devil_internal_exports.h
 )
 
-add_library(IL SHARED
+add_library(IL ${SHARED_LIBS}
     ${libIL_la_SOURCES}
-    )
+)
+
 if(NOT DEFINED PNG_LIBS )
     set(PNG_LIBS png14 )
 endif()
@@ -286,9 +287,10 @@ set(libILU_la_SOURCES
     ${ILU_INCLUDE}/ilu_error/ilu_err-spanish.h 
 )
 
-add_library(ILU SHARED
+add_library(ILU ${SHARED_LIBS}
     ${libILU_la_SOURCES}
 )
+
 target_link_libraries( ILU IL )
 install(TARGETS ILU
     RUNTIME DESTINATION ${DEVIL_PREFIX}/${BIN_INSTALL_DIR}
@@ -313,9 +315,10 @@ if(NOT DONT_BUILD_ILUT )
         include/IL/devil_internal_exports.h
     )
 
-    add_library(ILUT SHARED
+    add_library(ILUT ${SHARED_LIBS}
         ${libILUT_la_SOURCES}
     )
+
     target_link_libraries( ILUT ILU IL )
     install(TARGETS ILUT
         RUNTIME DESTINATION ${DEVIL_PREFIX}/${BIN_INSTALL_DIR}

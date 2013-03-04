@@ -27,12 +27,15 @@
 	#define INLINE extern inline
 #elif defined(_MSC_VER)	//@TODO: Get this working in MSVC++.
 						//  http://www.greenend.org.uk/rjk/2003/03/inline.html
-	#define NOINLINE
-	//#define INLINE
+	#ifndef NOINLINE	
+		#define INLINE __inline
+	#else
+		#define INLINE
+	#endif
 	/*#ifndef _WIN64  // Cannot use inline assembly in x64 target platform.
 		#define USE_WIN32_ASM
 	#endif//_WIN64*/
-	#define INLINE __inline
+	
 #else
 	#define INLINE inline
 #endif

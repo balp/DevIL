@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -667,3 +668,4 @@ ILAPI void ILAPIENTRY iBindImageTemp()
 
 	return;
 }
+#endif

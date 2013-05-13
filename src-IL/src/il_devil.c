@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -1067,3 +1068,4 @@ ILAPI ILboolean ILAPIENTRY ilResizeImage(ILimage *Image, ILuint Width, ILuint He
 	
 	return IL_TRUE;
 }
+#endif

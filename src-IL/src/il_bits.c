@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -183,3 +184,4 @@ ILuint breadVal(ILuint NumBits, BITFILE *BitFile)
 
 	return 0;
 }*/
+#endif

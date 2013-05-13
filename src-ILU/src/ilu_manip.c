@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 
 #include "ilu_internal.h"
 #include "ilu_states.h"
@@ -903,3 +904,4 @@ ILboolean ILAPIENTRY iluEqualize() {
 
 	return IL_TRUE;
 }
+#endif

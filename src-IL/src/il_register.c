@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -432,3 +433,4 @@ ILboolean ILAPIENTRY ilSetDuration(ILuint Duration)
 
 	return IL_TRUE;
 }
+#endif

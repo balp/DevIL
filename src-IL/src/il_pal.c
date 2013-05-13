@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -1110,3 +1111,4 @@ ILboolean ILAPIENTRY ilApplyPal(ILconst_string FileName)
 
 	return IL_TRUE;
 }
+#endif

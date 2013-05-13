@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -753,3 +754,4 @@ ILboolean ConvertTransparent(ILimage *Image, ILubyte TransColour)
 }
 
 #endif //IL_NO_GIF
+#endif

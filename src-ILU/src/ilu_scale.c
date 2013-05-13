@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Utility Sources
@@ -305,3 +306,4 @@ ILimage *iluScale1D_(ILimage *Image, ILimage *Scaled, ILuint Width)
 
 	return Scaled;
 }
+#endif

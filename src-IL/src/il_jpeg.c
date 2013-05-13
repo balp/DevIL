@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -999,3 +1000,4 @@ ILboolean ilSaveFromJpegStruct(void *_JpegInfo)
 #endif
 
 #endif//IL_NO_JPG
+#endif

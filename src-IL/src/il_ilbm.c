@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -655,4 +656,4 @@ done:
 
 
 #endif//IL_NO_ILBM
-
+#endif

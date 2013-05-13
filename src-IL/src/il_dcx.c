@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -484,3 +485,4 @@ file_read_error:
 }
 
 #endif//IL_NO_DCX
+#endif

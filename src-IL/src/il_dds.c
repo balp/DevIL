@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -2521,3 +2522,4 @@ ILAPI ILboolean ILAPIENTRY ilInvertSurfaceDxtcDataAlpha()
 
 
 #endif//IL_NO_DDS
+#endif

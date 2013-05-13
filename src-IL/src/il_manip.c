@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -946,3 +947,4 @@ ILboolean ILAPIENTRY ilClampNTSC(void)
 
 	return IL_TRUE;
 }
+#endif

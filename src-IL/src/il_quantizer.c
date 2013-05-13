@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------
 //         Color Quantization Demo
 //
@@ -641,3 +642,4 @@ error_label:
 	ifree(Qadd);
 	return NULL;
 }
+#endif

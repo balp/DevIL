@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -477,3 +478,4 @@ char *iff_decompress_rle(ILuint numBytes, char *compressedData,
 }
 
 #endif //IL_NO_IFF
+#endif

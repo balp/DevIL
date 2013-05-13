@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 // Description: Functions for run-length encoding
 //-----------------------------------------------------------------------------
@@ -151,3 +152,4 @@ ILuint ilRleCompress(ILubyte *Data, ILuint Width, ILuint Height, ILuint Depth, I
 
 	return DestW;
 }
+#endif

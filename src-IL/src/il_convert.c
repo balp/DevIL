@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -1124,3 +1125,4 @@ ILboolean ilFixImage()
 
 	return IL_TRUE;
 }
+#endif

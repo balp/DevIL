@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -676,3 +677,4 @@ void ico_readpng_cleanup()
 #endif//IL_NO_PNG
 
 #endif//IL_NO_ICO
+#endif

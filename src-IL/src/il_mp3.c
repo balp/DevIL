@@ -1,3 +1,4 @@
+#ifndef __clang_analyzer__
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -277,4 +278,4 @@ ILboolean iLoadMp3Internal(void)
 }
 
 #endif//IL_NO_MP3
-
+#endif

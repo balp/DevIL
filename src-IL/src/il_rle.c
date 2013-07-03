@@ -10,7 +10,9 @@
 
 #include "il_internal.h"
 #include "il_rle.h"
+#ifndef WIN32
 #include <stdint.h>
+#endif
 
 ILboolean ilRleCompressLine(ILubyte *p, ILuint n, ILubyte bpp,
 			ILubyte *q, ILuint *DestWidth, ILenum CompressMode) {

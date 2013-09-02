@@ -2120,16 +2120,18 @@ ILboolean ILAPIENTRY ilLoadImage(ILconst_string FileName)
 		#endif
 	}
 
-	// As a last-ditch effort, try to identify the image
-	Type = ilDetermineType(FileName);
-	if (Type == IL_TYPE_UNKNOWN) {
-		ilSetError(IL_INVALID_EXTENSION);
-		return IL_FALSE;
-	}
-	return ilLoad(Type, FileName);
-
 finish:
-	return bRet;
+    if(bRet != IL_TRUE) {
+        // As a last-ditch effort, try to identify the image
+        Type = ilDetermineType(FileName);
+        if (Type == IL_TYPE_UNKNOWN) {
+            ilSetError(IL_INVALID_EXTENSION);
+            return IL_FALSE;
+        }
+        ilSetError(IL_NO_ERROR);
+        return ilLoad(Type, FileName);
+    }
+    return bRet;
 }
 
 

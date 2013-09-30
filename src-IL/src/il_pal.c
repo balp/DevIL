@@ -26,6 +26,7 @@ ILboolean ILAPIENTRY ilLoadPal(ILconst_string FileName)
 	FILE		*f;
 	ILboolean	IsPsp;
 	char		Head[8];
+    size_t bytes = 0;
 
 	if (FileName == NULL) {
 		ilSetError(IL_INVALID_PARAM);
@@ -52,7 +53,13 @@ ILboolean ILAPIENTRY ilLoadPal(ILconst_string FileName)
 		return IL_FALSE;
 	}
 
-	fread(Head, 1, 8, f);
+	bytes = fread(Head, 1, 8, f);
+    if (bytes < 8) {
+        ilSetError(IL_FILE_READ_ERROR);
+        fclose(f);
+        return IL_FALSE;
+    }
+
 	if (!strncmp(Head, "JASC-PAL", 8))
 		IsPsp = IL_TRUE;
 	else
@@ -399,7 +406,12 @@ ILboolean ilLoadColPal(ILconst_string FileName)
 	iseek(0, IL_SEEK_SET);
 
 	if (RealFileSize > 768) {  // has a header
-		fread(&FileSize, 4, 1, (FILE*)ColFile);
+		size_t bytes = fread(&FileSize, 4, 1, (FILE*)ColFile);
+        if(bytes < 4) {
+            icloser(ColFile);
+			ilSetError(IL_FILE_READ_ERROR);
+			return IL_FALSE;
+        }
 		if ((FileSize - 8) % 3 != 0) {  // check to make sure an even multiple of 3!
 			icloser(ColFile);
 			ilSetError(IL_ILLEGAL_FILE_VALUE);

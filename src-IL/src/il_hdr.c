@@ -468,21 +468,21 @@ ILboolean RGBE_WriteHeader(ILuint width, ILuint height, rgbe_header_info *info)
 	char *programtype = "RGBE";
 
 	if (info && (info->valid & RGBE_VALID_PROGRAMTYPE))
-		programtype = info->programtype;
-	if (ilprintf("#?%s\n",programtype) < 0)
+		programtype = (char *)(info->programtype);
+	if (ilprintf("#?%s\n",programtype) < 3)
 		return IL_FALSE;
 	/* The #? is to identify file type, the programtype is optional. */
 	if (info && (info->valid & RGBE_VALID_GAMMA)) {
-		if (ilprintf("GAMMA=%g\n",info->gamma) < 0)
+		if (ilprintf("GAMMA=%g\n",info->gamma) < 6)
 		  return IL_FALSE;
 	}
 	if (info && (info->valid & RGBE_VALID_EXPOSURE)) {
-		if (ilprintf("EXPOSURE=%g\n",info->exposure) < 0)
+		if (ilprintf("EXPOSURE=%g\n",info->exposure) < 9)
 		  return IL_FALSE;
 	}
-	if (ilprintf("FORMAT=32-bit_rle_rgbe\n\n") < 0)
+	if (ilprintf("FORMAT=32-bit_rle_rgbe\n\n") < 20)
 		return IL_FALSE;
-	if (ilprintf("-Y %d +X %d\n", height, width) < 0)
+	if (ilprintf("-Y %d +X %d\n", height, width) < 8)
 		return IL_FALSE;
 	return IL_TRUE;
 }
